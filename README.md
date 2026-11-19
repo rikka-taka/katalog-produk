@@ -15,6 +15,14 @@ Aplikasi desktop sederhana untuk mengelola katalog produk, dibuat dengan **JavaF
 - Tampilan pengganti ("Gambar tidak tersedia" / "Gambar tidak terbaca") jika file gambar bermasalah.
 
 ## Screenshot
+### bagian tambah produk
+<img width="1247" height="1037" alt="image" src="https://github.com/user-attachments/assets/abe2a66c-f157-4dc5-bc2f-0f95e7a2dd50" />
+
+### bagian edit produk (pada bagian edit , berada di dropbox)
+<img width="1250" height="1036" alt="image" src="https://github.com/user-attachments/assets/ab89230b-6777-4a5b-88be-83d7b9d13b29" />
+
+### bagian hapus produk
+<img width="1250" height="1035" alt="image" src="https://github.com/user-attachments/assets/c88da6e7-127a-433f-b5e1-1b3f616c4b69" />
 
 
 ## Teknologi
