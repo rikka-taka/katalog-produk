@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.TilePane?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1000.0" stylesheets="@../styles/produk.css" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.KatalogController">
+   <top>
+      <HBox alignment="CENTER_LEFT" spacing="16.0" styleClass="header" BorderPane.alignment="CENTER">
+         <children>
+            <Label styleClass="title" text="KATALOG PRODUK" />
+            <Region HBox.hgrow="ALWAYS" />
+            <ComboBox fx:id="menuPilihan" prefWidth="170.0" promptText="Pilih menu" />
+         </children>
+      </HBox>
+   </top>
+   <center>
+      <StackPane alignment="TOP_LEFT" BorderPane.alignment="CENTER">
+         <children>
+            <VBox fx:id="tambahProduk" maxWidth="520.0" spacing="8.0" styleClass="panel" StackPane.alignment="TOP_LEFT">
+               <children>
+                  <Label styleClass="panel-title" text="Tambah produk" />
+                  <Label text="Nama produk" />
+                  <TextField fx:id="tambahField" promptText="Contoh: Roti Cokelat" />
+                  <Label text="Harga (Rp)" />
+                  <TextField fx:id="hargaField" onAction="#saveProduct" promptText="Contoh: 10000" />
+                  <Label text="Foto contoh" />
+                  <ComboBox fx:id="fotoBox" maxWidth="Infinity" />
+                  <Button onAction="#saveProduct" styleClass="button-primary" text="Simpan" />
+                  <Label fx:id="pesanLabel" wrapText="true" />
+                  <Label fx:id="jumlahLabel" styleClass="muted" text="Jumlah produk: 0" />
+               </children>
+            </VBox>
+            <VBox fx:id="pencarianProduk" managed="false" spacing="8.0" styleClass="panel" visible="false" StackPane.alignment="TOP_LEFT">
+               <children>
+                  <Label styleClass="panel-title" text="Edit produk" />
+                  <Label text="Nama produk" />
+                  <HBox spacing="8.0">
+                     <children>
+                        <TextField fx:id="cariField" onAction="#cariProdukAction" promptText="Contoh: Roti Cokelat" HBox.hgrow="ALWAYS" />
+                        <Button fx:id="cariProduk" onAction="#cariProdukAction" styleClass="button-primary" text="Cari" />
+                     </children>
+                  </HBox>
+                  <HBox spacing="16.0">
+                     <children>
+                        <Label fx:id="pesanLabel1" maxWidth="Infinity" wrapText="true" HBox.hgrow="ALWAYS" />
+                        <Label fx:id="jumlahLabel1" styleClass="muted" text="Ditemukan: 0 produk" />
+                     </children>
+                  </HBox>
+                  <ScrollPane fitToWidth="true" hbarPolicy="NEVER" minHeight="140.0" prefHeight="250.0" styleClass="hasil-edit" VBox.vgrow="ALWAYS">
+                     <content>
+                        <TilePane fx:id="hasilEditPane" hgap="12.0" styleClass="hasil-pencarian" tileAlignment="TOP_LEFT" vgap="12.0" />
+                     </content>
+                  </ScrollPane>
+                  <HBox fx:id="barisEdit" alignment="CENTER_LEFT" disable="true" spacing="8.0">
+                     <children>
+                        <Label text="Ubah" />
+                        <ComboBox fx:id="pilihanEditBox" prefWidth="170.0" promptText="Pilih data" />
+                        <TextField fx:id="nilaiBaruField" HBox.hgrow="ALWAYS" />
+                        <ComboBox fx:id="fotoEditBox" managed="false" prefWidth="200.0" visible="false" />
+                        <Button fx:id="butSimpanEdit" onAction="#simpanEdit" styleClass="button-primary" text="Simpan perubahan" />
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+            <VBox fx:id="hapuProduk" managed="false" maxWidth="520.0" spacing="8.0" styleClass="panel" visible="false" StackPane.alignment="TOP_LEFT">
+               <children>
+                  <Label styleClass="panel-title" text="Hapus produk" />
+                  <Label text="Nama produk" />
+                  <HBox spacing="8.0">
+                     <children>
+                        <TextField fx:id="cariHapusProduk" onAction="#cariUntukHapus" promptText="Contoh: Roti Cokelat" HBox.hgrow="ALWAYS" />
+                        <Button fx:id="butCariHapusProduk" onAction="#cariUntukHapus" styleClass="button-primary" text="Cari" />
+                     </children>
+                  </HBox>
+                  <ImageView fx:id="hasilPencarian" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
+                  <Label fx:id="pesanHapusLabel" wrapText="true" />
+                  <Button fx:id="butHapusProduk" disable="true" onAction="#hapusProdukDipilih" styleClass="button-danger" text="Hapus produk" />
+               </children>
+            </VBox>
+         </children>
+      </StackPane>
+   </center>
+   <bottom>
+      <ScrollPane fitToWidth="true" hbarPolicy="NEVER" prefHeight="278.0" prefWidth="1000.0" styleClass="katalog-scroll" BorderPane.alignment="CENTER">
+         <content>
+            <TilePane fx:id="katalogPane" hgap="16.0" styleClass="katalog" tileAlignment="TOP_LEFT" vgap="16.0" />
+         </content>
+      </ScrollPane>
+   </bottom>
+</BorderPane>

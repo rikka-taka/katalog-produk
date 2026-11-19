@@ -1,0 +1,168 @@
+/* =====================================================================
+   Katalog Produk - dipakai oleh produkKatalog.fxml dan KartuCatalog.fxml
+   Palet: biru #2563eb (aksi), biru tua #18334d (judul), abu kebiruan
+   untuk teks pendukung, kartu putih di atas latar #f4f7fb.
+   ===================================================================== */
+
+/* ---------- Dasar ---------- */
+.root {
+    -fx-font-family: "SansSerif";
+    -fx-font-size: 14px;
+    -fx-background-color: #f4f7fb;
+}
+/* harus di atas .muted / .title dst. supaya aturan di bawahnya yang menang */
+.label {
+    -fx-text-fill: #1e293b;
+}
+
+/* ---------- Teks ---------- */
+.title {
+    -fx-font-size: 26px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #18334d;
+}
+.panel-title {
+    -fx-font-size: 18px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #18334d;
+}
+.muted {
+    -fx-text-fill: #5b6b80;
+    -fx-font-size: 12px;
+}
+.kosong {
+    -fx-text-fill: #5b6b80;
+    -fx-padding: 8 0;
+}
+.pesan-berhasil {
+    -fx-text-fill: #15803d;
+}
+.pesan-error {
+    -fx-text-fill: #b91c1c;
+}
+
+/* ---------- Header dan panel ---------- */
+.header {
+    -fx-padding: 20 24;
+    -fx-background-color: white;
+    -fx-border-color: #d5deea;
+    -fx-border-width: 0 0 1 0;
+}
+.panel {
+    -fx-padding: 20 24;
+}
+
+/* ---------- Isian ---------- */
+.text-field {
+    -fx-padding: 9 10;
+    -fx-background-color: white;
+    -fx-background-insets: 0;
+    -fx-background-radius: 7;
+    -fx-border-color: #8190a5;
+    -fx-border-width: 1;
+    -fx-border-radius: 7;
+    -fx-prompt-text-fill: #7b8aa0;
+}
+.text-field:focused {
+    -fx-border-color: #2563eb;
+}
+.combo-box-base {
+    -fx-background-color: white;
+    -fx-background-insets: 0;
+    -fx-background-radius: 7;
+    -fx-border-color: #8190a5;
+    -fx-border-width: 1;
+    -fx-border-radius: 7;
+}
+.combo-box-base:focused {
+    -fx-border-color: #2563eb;
+}
+.combo-box > .list-cell {
+    -fx-padding: 9 10;
+}
+.combo-box-base > .arrow-button {
+    -fx-background-color: transparent;
+    -fx-background-radius: 0 7 7 0;
+}
+
+/* ---------- Tombol ---------- */
+/* border transparan 2px dijaga supaya cincin fokus tidak menggeser ukuran tombol */
+.button-primary, .button-danger {
+    -fx-text-fill: white;
+    -fx-padding: 8 22;
+    -fx-background-radius: 8;
+    -fx-border-color: transparent;
+    -fx-border-width: 2;
+    -fx-border-radius: 8;
+    -fx-cursor: hand;
+}
+.button-primary {
+    -fx-background-color: #2563eb;
+}
+.button-primary:hover {
+    -fx-background-color: #1d4ed8;
+}
+.button-danger {
+    -fx-background-color: #dc2626;
+}
+.button-danger:hover {
+    -fx-background-color: #b91c1c;
+}
+.button-primary:focused, .button-danger:focused {
+    -fx-border-color: #1e3a8a;
+}
+
+/* ---------- Katalog (bagian bawah) ---------- */
+.katalog {
+    -fx-padding: 20 24;
+}
+.katalog-scroll {
+    -fx-border-color: #d5deea transparent transparent transparent;
+    -fx-border-width: 1 0 0 0;
+}
+.scroll-pane, .scroll-pane > .viewport {
+    -fx-background-color: transparent;
+}
+
+/* ---------- Hasil pencarian di panel edit ---------- */
+.hasil-edit {
+    -fx-border-color: #d5deea;
+    -fx-border-width: 1;
+    -fx-border-radius: 8;
+}
+.hasil-pencarian {
+    -fx-padding: 12;
+}
+
+/* ---------- Kartu produk (KartuCatalog.fxml) ---------- */
+/* Lebar kartu 178 - padding 10 x 2 = 158, sama dengan fitWidth gambar.
+   Garis tepi dibuat dari lapisan latar (bukan border) agar tidak
+   mengurangi ruang isi kartu. */
+.kartu-produk {
+    -fx-padding: 10;
+    -fx-background-color: #d5deea, white;
+    -fx-background-insets: 0, 1;
+    -fx-background-radius: 12, 11;
+}
+.kartu-nama {
+    -fx-font-weight: bold;
+    -fx-text-fill: #18334d;
+}
+.kartu-harga {
+    -fx-font-size: 15px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #2563eb;
+}
+
+/* Kartu di panel edit: bisa diklik, dan diberi bingkai biru saat dipilih */
+.kartu-dapat-dipilih {
+    -fx-cursor: hand;
+}
+.kartu-dapat-dipilih:hover {
+    -fx-background-color: #93c5fd, white;
+}
+.kartu-dipilih, .kartu-dipilih:hover {
+    -fx-background-color: #2563eb, white;
+    -fx-background-insets: 0, 2;
+    -fx-background-radius: 12, 10;
+}

@@ -1,0 +1,89 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+package data;
+
+import db.Database;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import model.Produk;
+
+/**
+ *
+ * @author muama
+ */
+public class ProdukRepository {
+
+    public void add(Produk produk) throws SQLException {
+        String sql = "INSERT INTO produk (nama, harga, foto) VALUES (?, ?, ?)";
+        try (
+                Connection koneksi = Database.bukaKoneksi(); PreparedStatement perintah = koneksi.prepareStatement(sql)) {
+            perintah.setString(1, produk.getNama());
+            perintah.setLong(2, produk.getHarga());
+            perintah.setString(3, produk.getFoto());
+            perintah.executeUpdate();
+        }
+    }
+
+    public ArrayList<Produk> getAll() throws SQLException {
+        ArrayList<Produk> daftarProduk = new ArrayList<>();
+        String sql = "SELECT id, nama, harga, foto FROM produk ORDER BY id";
+        try (
+                Connection koneksi = Database.bukaKoneksi(); PreparedStatement perintah = koneksi.prepareStatement(sql); ResultSet hasil = perintah.executeQuery()) {
+            while (hasil.next()) {
+                long id = hasil.getLong("id");
+                String nama = hasil.getString("nama");
+                long harga = hasil.getLong("harga");
+                String foto = hasil.getString("foto");
+                Produk produk = new Produk(id, nama, harga, foto);
+                daftarProduk.add(produk);
+            }
+        }
+        return daftarProduk;
+    }
+
+    public ArrayList<Produk> searchByNama(String kataKunci) throws SQLException {
+        ArrayList<Produk> daftarProduk = new ArrayList<>();
+        String sql = "SELECT id, nama, harga, foto FROM produk WHERE nama LIKE ? ORDER BY id";
+        try (
+                Connection koneksi = Database.bukaKoneksi(); PreparedStatement perintah = koneksi.prepareStatement(sql)) {
+            perintah.setString(1, "%" + kataKunci + "%");
+            try (ResultSet hasil = perintah.executeQuery()) {
+                while (hasil.next()) {
+                    long id = hasil.getLong("id");
+                    String nama = hasil.getString("nama");
+                    long harga = hasil.getLong("harga");
+                    String foto = hasil.getString("foto");
+                    daftarProduk.add(new Produk(id, nama, harga, foto));
+                }
+
+            }
+        }
+        return daftarProduk;
+    }
+
+    public void delete(long id) throws SQLException {
+        String sql = "DELETE FROM produk WHERE id = ?";
+        try (
+                Connection koneksi = Database.bukaKoneksi(); PreparedStatement perintah = koneksi.prepareStatement(sql)) {
+            perintah.setLong(1, id);
+            perintah.executeUpdate();
+        }
+    }
+
+    public void update(Produk produk) throws SQLException {
+        String sql = "UPDATE produk SET nama = ?, harga = ?, foto = ? WHERE id = ?";
+        try (
+                Connection koneksi = Database.bukaKoneksi(); PreparedStatement perintah = koneksi.prepareStatement(sql)) {
+            perintah.setString(1, produk.getNama());
+            perintah.setLong(2, produk.getHarga());
+            perintah.setString(3, produk.getFoto());
+            perintah.setLong(4, produk.getIdProduk());
+            perintah.executeUpdate();
+        }
+    }
+}
